@@ -20,7 +20,6 @@ ____/______/______/______/______/_____"=.o|o_.--""___/______/______/______/____
 /______/______/______/______/______/______/______/______/______/______/_____ /
 *******************************************************************************
 ''')
-
 print("Bem-vindo a ilha do tesouro!")
 print("Sua missão é achar o tesouro!")
 escolha1 = input('você encontrou um cruzamento para onde deseja ir? Digite "esquerda" ou "direita?" ').lower()
