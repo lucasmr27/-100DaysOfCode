@@ -1,0 +1,1 @@
+lista_de_palavras = ['arvore', 'carro', 'camelo', 'cigarro', 'apartamento', 'mochila']
