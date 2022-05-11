@@ -1,13 +1,14 @@
 # Write your code below this line 👇
 def prime_checker(number):
     contador = 0
-    for n in range(1, number + 1):
-        if number % n == 0:
+    for num in range(1, number):
+        if number % num == 0:
             contador += 1
-        if contador > 2:
+        if contador > 1:
             print('Não é primo')
             return
     print('É primo')
+
 
 # Write your code above this line 👆
 
