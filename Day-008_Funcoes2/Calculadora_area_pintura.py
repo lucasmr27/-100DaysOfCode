@@ -1,7 +1,7 @@
 # Write your code below this line 👇
 def paint_calc(height, width, cover):
     area = height * width
-    cans = int(area / coverage) + (area % coverage > 0)
+    cans = int(area / coverage) + (area % cover > 0)
     print(f'Você precisará de {cans} latas.')
 
 
