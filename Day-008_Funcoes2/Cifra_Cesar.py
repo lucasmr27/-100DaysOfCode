@@ -6,8 +6,10 @@ texto = input("Type your message:\n").lower()
 shift = int(input("Type the shift number:\n"))
 
 
-def encrypt(plain_text, shift_amount):
+def caesar(plain_text, shift_amount, cipher_direction):
     shift_amount = shift_amount % len(alphabet)
+    if cipher_direction == 'decode':
+        shift_amount *= -1
     cipher_text = ''
     cipher_alphabet = alphabet[shift_amount: len(alphabet)] + alphabet[0: shift_amount]
     for letra in plain_text:
@@ -15,4 +17,5 @@ def encrypt(plain_text, shift_amount):
     print(cipher_text)
 
 
-encrypt(texto, shift)
+caesar(texto, shift, direction)
+
