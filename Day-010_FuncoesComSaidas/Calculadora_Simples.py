@@ -28,8 +28,18 @@ operacoes = {
     '/': divisao
 }
 num1 = int(input('Qual é o primeiro número?'))
-num2 = int(input('Qual é o segundo número?'))
-
 for operacao in operacoes:
-    print(operacoes[operacao](num1, num2))
+    print(operacao)
+
+proxima = True
+while proxima:
+    simbolo_da_operacao = input("Qual operação deseja realizar?")
+    num2 = int(input('Digite o próxima número?'))
+    calculo = operacoes[simbolo_da_operacao]
+    resposta = calculo(num1, num2)
+    print(f"{num1} {simbolo_da_operacao} {num2} = {resposta}")
+    if input(f'Digite "s" para continuar calculando com {resposta}, ou digite "n" para finalizar.') == 's':
+        num1 = resposta
+    else:
+        proxima = False
 
