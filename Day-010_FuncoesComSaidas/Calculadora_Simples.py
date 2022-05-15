@@ -1,10 +1,10 @@
 from art import logo
-from os import system, name
+import os
 
 
 def limpar():
     """ Limpa a tela do terminal """
-    system('clear' if name == 'posix' else 'cls')
+    os.system('clear' if os.name == 'posix' else 'cls')
 
 
 def soma(n1, n2):
@@ -27,6 +27,8 @@ def multiplicacao(n1, n2):
 # Divide
 def divisao(n1, n2):
     """Realiza a divisão dos dois termos"""
+    if n1 == 0:
+        return "Valor impossível ou indeterminado!"
     return n1 / n2
 
 
@@ -39,6 +41,8 @@ operacoes = {
 
 
 def calculadora():
+    limpar()
+
     print(logo)
 
     num1 = float(input('Qual é o primeiro número?'))
@@ -53,9 +57,13 @@ def calculadora():
         resposta = calculo(num1, num2)
 
         print(f"{num1} {simbolo_da_operacao} {num2} = {resposta}")
-
-        if input(
-                f'Digite "s" para continuar calculando com {resposta}, ou digite "n" para iniciar uma nova operação.') == 's':
+        if isinstance(resposta, str):
+            input('Pressione enter para iniciar um novo calculo.')
+            calculadora()
+            proxima = False
+            continue
+        if input(f'Digite "s" para continuar calculando com {resposta},'
+                 f' ou digite "n" para iniciar uma nova operação.') == 's':
             num1 = resposta
         else:
             proxima = False
