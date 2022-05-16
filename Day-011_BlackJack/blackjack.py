@@ -28,7 +28,7 @@ def vez_jogador(continuar=True):
         print(f"Suas cartas são: {jogador}, você tem {pontos} pontos.")
         if pontos > 21:
             return False
-        continuar = input("Aperte 's' para pegar outra carta ou 'n' para passar.") == "s"
+        continuar = input("Aperte 's' para pegar outra carta ou 'n' para passar.").lower() == "s"
     return True
 
 
@@ -44,19 +44,24 @@ def vez_dealer(pontos_jogador):
     return False
 
 
-print(logo)
+novo_jogo = True
+while novo_jogo:
+    print(logo)
 
-jogador = []
-pegar_carta(jogador)
-dealer = []
-pegar_carta(dealer)
-pegar_carta(dealer)
+    jogador = []
+    pegar_carta(jogador)
+    dealer = []
+    pegar_carta(dealer)
+    pegar_carta(dealer)
 
-venceu = vez_jogador()
-if venceu:
-    venceu = vez_dealer(contar_pontos(jogador))
+    venceu = vez_jogador()
+    if venceu:
+        venceu = vez_dealer(contar_pontos(jogador))
 
-if venceu:
-    print("Você ganhou!")
-else:
-    print("Você perdeu")
+    if contar_pontos(jogador) == contar_pontos(dealer):
+        print("O jogo empatou")
+    elif venceu:
+        print("Você ganhou!")
+    else:
+        print("Você perdeu")
+    novo_jogo = input("Deseja jogar novamente? Digite sim ou não").lower() == 'sim'
