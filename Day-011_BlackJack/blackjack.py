@@ -2,7 +2,6 @@ from art import logo
 import random
 
 lista_de_cartas = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
-print(logo)
 
 
 def pegar_carta(cartas):
@@ -11,31 +10,53 @@ def pegar_carta(cartas):
 
 
 def contar_pontos(cartas):
-    pontos = int()
+    pontos = 0
     for posicao in range(len(cartas)):
         pontos = sum(cartas)
         if pontos <= 21:
             return pontos
         elif cartas[posicao] == 11:
             cartas[posicao] = 1
-            contar_pontos(cartas)
+            pontos = contar_pontos(cartas)
     return pontos
 
+
+def vez_jogador(continuar=True):
+    while continuar:
+        pegar_carta(jogador)
+        pontos = contar_pontos(jogador)
+        print(f"Suas cartas são: {jogador}, você tem {pontos} pontos.")
+        if pontos > 21:
+            return False
+        continuar = input("Aperte 's' para pegar outra carta ou 'n' para passar.") == "s"
+    return True
+
+
+def vez_dealer(pontos_jogador):
+    pontos_dealer = contar_pontos(dealer)
+    print(f"As cartas do Dealer são: {dealer}, ele tem {pontos_dealer} pontos.")
+    while pontos_jogador > pontos_dealer:
+        pegar_carta(dealer)
+        pontos_dealer = contar_pontos(dealer)
+        print(f"As cartas do Dealer são: {dealer}, ele tem {pontos_dealer} pontos.")
+        if pontos_dealer > 21:
+            return True
+    return False
+
+
+print(logo)
 
 jogador = []
 pegar_carta(jogador)
 dealer = []
 pegar_carta(dealer)
 pegar_carta(dealer)
-continuar = True
 
+venceu = vez_jogador()
+if venceu:
+    venceu = vez_dealer(contar_pontos(jogador))
 
-while continuar:
-    pegar_carta(jogador)
-    print(f"Suas cartas são: {jogador}, você tem {contar_pontos(jogador)} pontos.")
-    if contar_pontos(jogador) > 21:
-        print("você perdeu")
-        break
-    continuar = input("Aperte 's' para pegar outra carta ou 'n' para passar.") == "s"
-
-print(f"As cartas do Dealer são: {dealer}, ele tem {contar_pontos(dealer)} pontos.")
+if venceu:
+    print("Você ganhou!")
+else:
+    print("Você perdeu")
