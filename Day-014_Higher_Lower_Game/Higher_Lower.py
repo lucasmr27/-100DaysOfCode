@@ -12,7 +12,10 @@ def limpar():
 def compare(a):
     global option_a
     b = random.randint(0, len(data) - 1)
+    while b == option_a:
+        b = random.randint(0, len(data) - 1)
     option_a = b
+
     print(f'Compare A: {data[a]["name"]}, {data[a]["description"]}, from {data[a]["country"]}.')
     print(art.vs)
     print(f'Against B: {data[b]["name"]}, {data[b]["description"]}, from {data[b]["country"]}.')
