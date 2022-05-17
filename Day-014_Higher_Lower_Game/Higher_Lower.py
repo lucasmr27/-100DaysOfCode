@@ -1,6 +1,12 @@
 import random
 import art
 from data import data
+import os
+
+
+def limpar():
+    """ Limpa a tela do terminal """
+    os.system('clear' if os.name == 'posix' else 'cls')
 
 
 def compare(a):
@@ -22,9 +28,11 @@ print(art.logo)
 while True:
     if compare(option_a):
         score += 1
+        limpar()
         print(art.logo)
         print(f"You're right! Current score: {score}")
         continue
     else:
+        limpar()
         print(f"Sorry, that's wrong. Final score: {score}")
     break
