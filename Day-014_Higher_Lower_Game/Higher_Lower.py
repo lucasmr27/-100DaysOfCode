@@ -24,7 +24,6 @@ while True:
         score += 1
         print(art.logo)
         print(f"You're right! Current score: {score}")
-
         continue
     else:
         print(f"Sorry, that's wrong. Final score: {score}")
