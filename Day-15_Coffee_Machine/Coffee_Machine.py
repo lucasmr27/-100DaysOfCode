@@ -33,13 +33,13 @@ resources = {
     "milk": 200,
     "coffee": 100,
 }
-money = 0.00
 
-print(MENU['espresso']['ingredients']['water'])
+money = 0.00
 
 while True:
     flavour = input("What would you like? (espresso/latte/cappuccino):").lower()
     if flavour in [item for item in MENU]:
+        print(f"Você selecionou {flavour}, seu custo é de R${MENU[flavour]['cost']}")
         if not check_resources(MENU[flavour]['ingredients']):
             print('Sorry, not enough resources.')
             continue
@@ -55,7 +55,13 @@ while True:
         for ingredient in MENU[flavour]['ingredients']:
             resources[ingredient] -= MENU[flavour]['ingredients'][ingredient]
         money -= MENU[flavour]['cost']
-
+        print('Retire seu pedido')
+        if money > 0:
+            if input('Deseja continuar comprando? "s" ou "n". ') == 'n':
+                print(f"Retire seu troco de R${money}")
+                money = 0.0
+            else:
+                continue
     elif flavour == 'report':
         report()
         continue
