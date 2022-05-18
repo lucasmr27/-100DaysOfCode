@@ -25,7 +25,7 @@ def insert_coin():
 
 
 def check_money(cost):
-    return money <= cost
+    return money < cost
 
 
 resources = {
@@ -39,7 +39,7 @@ print(MENU['espresso']['ingredients']['water'])
 
 while True:
     flavour = input("What would you like? (espresso/latte/cappuccino):").lower()
-    if flavour in [x for x in MENU]:
+    if flavour in [item for item in MENU]:
         if not check_resources(MENU[flavour]['ingredients']):
             print('Sorry, not enough resources.')
             continue
@@ -52,6 +52,9 @@ while True:
                     print(f'Retire seu dinheiro: R${money}')
                     money = 0.0
                     break
+        for ingredient in MENU[flavour]['ingredients']:
+            resources[ingredient] -= MENU[flavour]['ingredients'][ingredient]
+        money -= MENU[flavour]['cost']
 
     elif flavour == 'report':
         report()
