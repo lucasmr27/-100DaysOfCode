@@ -68,5 +68,4 @@ while True:
     else:
         print("Invalid flavour")
         continue
-    print("Irá retornar")
-    break
+
