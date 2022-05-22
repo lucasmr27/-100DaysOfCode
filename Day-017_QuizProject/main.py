@@ -6,11 +6,10 @@ question_bank = []
 for question in question_data:
     question_bank.append(Question(question['text'], question['answer']))
 
-# TODO: asking the questions
 quiz = QuizBrain(question_bank)
-quiz.next_question()
 
-# TODO: checking if  the answer was correct
+while quiz.still_has_questions():
+    quiz.next_question()
 
-
-# TODO: checking if we're the end of the quiz
+print("You've complete the quiz.")
+print(f"Your final score was: {quiz.score}/12")
