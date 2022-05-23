@@ -1,4 +1,4 @@
-from turtle import Turtle, Screen
+from tarug import Turtle, Screen
 
 timmy = Turtle()
 print(timmy)
