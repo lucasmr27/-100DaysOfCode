@@ -14,7 +14,6 @@ def poligono(lados, tamanho=100):
 
 def andar_bebado(passos=200, distancia=25):
     tim.pensize(10)
-    tim.speed('fast')
     for _ in range(passos):
         tim.forward(distancia)
         # tim.color(random.choice(colours))
@@ -29,16 +28,36 @@ def mudar_cor():
     return r, g, b
 
 
+def spirograph(x):
+    for _ in range(x):
+        tim.circle(50)
+        tim.right(360 / x)
+        tim.forward(10)
+        tim.color(mudar_cor())
+
+
 colours = ['lime', 'gold', 'red', 'blue', 'yellow', 'orange', 'purple', 'dark violet', 'deep pink', 'deep sky blue']
 tim = Turtle()
 tim.shape("turtle")
 tim.color("red")
+tim.speed('fastest')
 
-x = 36
-for _ in range(x):
-    tim.circle(50)
-    tim.right(360/x)
-    tim.color(mudar_cor())
+tim.penup()
+tim.right(90)
+tim.forward(250)
+tim.right(90)
+tim.forward(250)
+tim.right(180)
+
+for y in range(10):
+    for x in range(10):
+        tim.dot(20, mudar_cor())
+        tim.forward(50)
+    tim.right(-90)
+    tim.forward(50)
+    tim.right(-90)
+    tim.forward(500)
+    tim.right(180)
 
 # for lado in range(3, 10):
 #     poligono(lado)
