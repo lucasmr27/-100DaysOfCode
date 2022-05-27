@@ -2,31 +2,32 @@ from turtle import Turtle, Screen
 import time
 
 
-def move_right(cobra):
-    new_position = [(cobra[0][0]+20, cobra[0][1])]
-    cobra = new_position + cobra[0:-1]
-    return cobra
+def move_right():
+    global positions
+    new_position = [(positions[0][0]+20, positions[0][1])]
+    positions = new_position + positions[0:-1]
 
 
-def move_up(cobra):
-    new_position = [(cobra[0][0], cobra[0][1]+20)]
-    cobra = new_position + cobra[0:-1]
-    return cobra
+def move_left():
+    global positions
+    new_position = [(positions[0][0]-20, positions[0][1])]
+    positions = new_position + positions[0:-1]
 
 
-def move_left(cobra):
-    new_position = [(cobra[0][0]-20, cobra[0][1])]
-    cobra = new_position + cobra[0:-1]
-    return cobra
+def move_up():
+    global positions
+    new_position = [(positions[0][0], positions[0][1]+20)]
+    positions = new_position + positions[0:-1]
 
 
-def move_down(cobra):
-    new_position = [(cobra[0][0], cobra[0][1]-20)]
-    cobra = new_position + cobra[0:-1]
-    return cobra
+def move_down():
+    global positions
+    new_position = [(positions[0][0], positions[0][1]-20)]
+    positions = new_position + positions[0:-1]
 
 
-def move(snake, positions):
+def move(positions):
+    global snake
     for parte in range(len(snake)):
         snake[parte].goto(positions[parte])
 
@@ -51,12 +52,12 @@ for body in range(len(positions)):
 
 for _ in range(10):
     time.sleep(0.5)
-    positions = move_right(positions)
-    move(snake, positions)
+    move_right()
+    move(positions)
 for _ in range(10):
     time.sleep(0.5)
-    positions = move_up(positions)
-    move(snake, positions)
+    move_up()
+    move(positions)
 
 
 screen.exitonclick()
