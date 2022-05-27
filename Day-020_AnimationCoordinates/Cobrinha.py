@@ -30,11 +30,14 @@ def move(positions):
     global snake
     for parte in range(len(snake)):
         snake[parte].goto(positions[parte])
+    screen.update()
 
 
 screen = Screen()
 screen.bgcolor("black")
 positions = [(20, 0), (0, 0), (-20, 0), (-40, 0), (-60, 0)]
+screen.tracer(0)
+
 snake = []
 for body in range(len(positions)):
     snake.append(Turtle("square"))
